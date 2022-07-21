@@ -33,9 +33,18 @@ public class DoubleCircular<T> {
             System.out.println("No hay elementos en la lista");
             return;
         }
-
+        Node current = root;
         if (size % 2 == 0) {
-            Node current = root;
+
+            end.getBack().setNext(root);
+            end.setNext(null);
+            root.setBack(end.getBack());
+            end.setBack(null);
+            end = root.getBack();
+            size--;
+
+        } else {
+
             for (int i = 0; i < ((index + 1) / 2); i++) {
 
                 current = current.getNext();
@@ -47,13 +56,6 @@ public class DoubleCircular<T> {
                 size--;
             }
             {
-
-                end.getBack().setNext(root);
-                end.setNext(null);
-                root.setBack(end.getBack());
-                end.setBack(null);
-                end = root.getBack();
-                size--;
 
             }
 
